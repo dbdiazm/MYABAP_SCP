@@ -1,0 +1,30 @@
+@Metadata.layer: #CORE
+annotate view zcds_clientes_dd
+    with 
+{
+    //zcds_clientes_dd
+    
+    @UI.facet: [{ id: 'DetalleCliente', label: 'Detalles del Cliente', type:#COLLECTION, position: 10},
+            { id: 'Cliente',  parentId: 'DetalleCliente', label: 'Caracteristicas', type:#FIELDGROUP_REFERENCE, 
+              targetQualifier: 'DetalleCliente' , position: 10 }]
+    
+    //Campos del fieldGroup
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'Codigo del Cliente', position: 10 }]  
+    Id_cliente;
+    
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'Tipo de acceso', position: 10 }] 
+    Tipo_acceso;
+    
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'Nombre del Cliente', position: 10 }] 
+    Nombre;
+    
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'Apellido del Cliente', position: 10 }] 
+    Apellidos;
+    
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'Correo del Cliente', position: 10 }] 
+    Email;
+    
+     @UI.fieldGroup: [{ qualifier: 'DetalleCliente', label: 'URL del Cliente', position: 10 }] 
+    Url;
+    //final Campos del fieldGroup
+}

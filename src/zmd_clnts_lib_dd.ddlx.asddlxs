@@ -1,0 +1,12 @@
+@Metadata.layer: #CORE
+
+annotate view zcds_clnts_dd
+    with 
+{ //zcds_clnts_dd
+ @UI.lineItem: [{ position: 10, importance: #HIGH , label : 'Codigo de Cliente' }] 
+  Id_cliente;
+  
+  @UI.lineItem: [{ position: 20, importance: #HIGH , label : 'Codigo del Libro' }]
+  Id_libro;
+    
+}

@@ -1,0 +1,89 @@
+@Metadata.layer:  #CORE
+@Search.searchable: true
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    typeImageUrl: '',
+    imageUrl: '',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Id_libro',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Titulo',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+annotate view ZCDS_I_LIBROS
+    with 
+{
+   //ZCDS_I_LIBROS
+@UI.facet: [{ id: 'DetalleLibro', label: 'Detalles del Libro', type:#COLLECTION, position: 10},
+            { id: 'Libro',  parentId: 'DetalleLibro', label: 'Caracteristicas', type:#FIELDGROUP_REFERENCE, 
+              targetQualifier: 'DetalleLibro' , position: 10 },
+            { id: 'Ventas', label: 'Ventas', type:#LINEITEM_REFERENCE, targetElement: '_LClientes', position:  20 }]
+  
+//Campos del fieldGroup
+     @UI.fieldGroup: [{ qualifier: 'DetalleLibro', position: 10 }]   
+     Autor;     
+     
+     @UI.fieldGroup: [{ qualifier: 'DetalleLibro', position: 20 }]   
+     Paginas;
+     
+     @UI.fieldGroup: [{ qualifier: 'DetalleLibro', position: 30 }]    
+     Moneda;
+     
+     @UI.fieldGroup: [{ qualifier: 'DetalleLibro', position: 40 }]  
+     Formato;
+     
+     @UI.fieldGroup: [{ qualifier: 'DetalleLibro', position: 50 }]  
+     Url;
+//FIN Campos del fieldGroup
+
+     
+/// elementos del reporte principal
+     @UI.lineItem: [{ position: 10, importance: #HIGH }]
+     Id_libro;  
+     
+     @UI.lineItem: [{ position: 20, importance: #HIGH }]
+     @UI.selectionField: [{ position: 10 }]
+     Titulo;
+     
+      @UI.lineItem: [{ position: 30, importance: #HIGH }]
+      @Search: {
+        defaultSearchElement: true,
+        ranking: #MEDIUM,
+        fuzzinessThreshold: 0.8 }    
+     Editorial;    
+     
+     @UI.lineItem: [{ position: 40, importance: #LOW }]
+     @Consumption.valueHelpDefinition: [{ entity: {  name: 'ZCDS_CATEGO_DD' , element: 'bi_categ' } }]
+     Bi_categ;  
+     
+     @UI.lineItem: [{ position: 50, importance: #HIGH }]
+     Idioma;
+     
+     @UI.lineItem: [{ position: 60, importance: #HIGH }] 
+     Precio;
+     
+     @UI.lineItem: [{ position: 70, importance: #HIGH }]
+     NivelVentas;
+     
+     @UI.lineItem: [{ position: 80, importance: #HIGH , label: 'Estatus de Ventas', criticality: 'NivelVentas'}]
+     EstadoVentas;
+///FIN elementos del reporte principal
+}
